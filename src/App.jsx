@@ -101,7 +101,6 @@ export default function App() {
   const removeItem = (id) => setCart((prev) => prev.filter((p) => p.id !== id));
 
   const handleCheckout = () => {
-    // Simple mock checkout
     alert("Thank you for your purchase! This is a demo checkout.");
     setCart([]);
     setCartOpen(false);
@@ -110,10 +109,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <Navbar onCartClick={() => setCartOpen(true)} cartCount={cartCount} />
-      <Hero onShopClick={() => {
-        const el = document.getElementById("products");
-        el?.scrollIntoView({ behavior: "smooth" });
-      }} />
+      <Hero
+        onShopClick={() => {
+          const el = document.getElementById("products");
+          el?.scrollIntoView({ behavior: "smooth" });
+        }}
+      />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section id="products">
@@ -123,7 +124,7 @@ export default function App() {
               <p className="text-neutral-500">Sustainably sourced, delivered chilled to your door.</p>
             </div>
           </div>
-          <ProductList products={PRODUCTS} onAddToCart={(p) => { addToCart(p.id); }} />
+          <ProductList products={PRODUCTS} onAddToCart={(p) => addToCart(p.id)} />
         </section>
       </main>
 
